@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="../CSS/bootstrap.css" />
     <script src="https://kit.fontawesome.com/c9372bc587.js" crossorigin="anonymous"></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
+    <script src="../JS/loja.js"></script>
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+    <style>
+    </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar  sticky-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <!-- Imagem da organização 
@@ -58,5 +62,46 @@
         </div>
       </div>
     </nav>
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-md-4 mt-1">
+          <div class="card text-center">
+            <img class='mx-auto mt-2' width="200" height="200"
+            src="../Images/produtos/coleira_lola.png"
+            />
+            <div class="card-body" id="p_1">
+              <h5 class="card-title">Coleira lola</h5>
+              <p class="card-text">A coleira é totalmente ajustável, muito macia e segura. Feita em poliéster resistente.</p>
+              <p>Preço: <span class="preco">19.99</span>€</p>
+              <form onsubmit="comprar(event)">
+              <div class="input-group mb-2">
+                <label for="quantidade_compra" class="input-group-text">Quantidade:</label>
+                <input type="number" class="form-control quantidade" min="1" step="1" name="quantidade_compra">
+                <div class="input-group-append ms-2">
+                  <button class="btn btn-primary" type="submit">COMPRAR</button>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="precoJanela" role="dialog" style="overflow: hidden;"> 
+      <div class="modal-dialog modal-dialog-centered modal ">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">ALERTA DE COMPRA</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="fecharJanela()"></button>
+          </div>
+          <div class="modal-body">
+            <p class="texto-principal"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="fecharJanela()">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>    
   </body>
 </html>
