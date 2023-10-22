@@ -1,0 +1,21 @@
+.away-container
+{
+    max-width: 80%;
+
+}
+
+@media only screen and (max-width: 576px)
+{
+    .away-container
+    {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 992px)
+{
+    .away-container
+    {
+        max-width: 80%;
+    }
+}
