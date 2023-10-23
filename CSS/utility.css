@@ -1,21 +1,49 @@
-.away-container
-{
+.away-container {
+  max-width: 80%;
+}
+
+.main-banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://warringtonanimalwelfare.org.uk/sites/default/files/Dog%20rescue%20society_0.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  color: #fff;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.lg-text {
+  font-size: 52px;
+  font-weight: 600;
+  text-transform: none;
+  color: #fff;
+}
+
+input[type="checkbox"]:required:invalid + label {
+    color: red;
+  }
+  input[type="checkbox"]:required:valid + label {
+    color: green;
+  }
+
+
+/* Media queries */
+@media only screen and (max-width: 576px) {
+  .away-container {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .main-banner {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .away-container {
     max-width: 80%;
-
+  }
 }
 
-@media only screen and (max-width: 576px)
-{
-    .away-container
-    {
-        max-width: 100%;
-    }
-}
-
-@media only screen and (max-width: 992px)
-{
-    .away-container
-    {
-        max-width: 80%;
-    }
-}

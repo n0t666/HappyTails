@@ -15,4 +15,3 @@ function comprar(event,id) {
 function fecharJanela() {
   $("#precoJanela").modal("hide");
 }
-

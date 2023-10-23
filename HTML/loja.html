@@ -5,14 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html" />
     <title>Loja</title>
     <link rel="stylesheet" href="../CSS/bootstrap.css" />
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <script src="https://kit.fontawesome.com/c9372bc587.js" crossorigin="anonymous"></script>
-    <script src="../JS/bootstrap.bundle.min.js"></script>
-    <script src="../JS/loja.js"></script>
-    <script src="../JS/jquery-3.7.1.min.js"></script>
-    <script src="../JS/listagemCaes.js"></script>
-    <style>
-    </style>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <style></style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
@@ -47,32 +41,45 @@
             class="navbar-nav a nav-underline navbar-collapse justify-content-center"
           >
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="./index.html"><i class="fa-solid fa-house me-1"></i></i>Página inicial</a>
+              <a class="nav-link" href="./index.html"
+                ><i class="fa-solid fa-house me-1"></i>Página inicial</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./loja.html"><i class="fa-solid fa-cart-shopping me-1"></i>Loja</a>
-            </li>
-            
-
-            <li class="nav-item">
-              <a class="nav-link" href="./caes.html"><i class="fa-solid fa-paw me-1"></i>Cães para adoção</a>
+              <a class="nav-link active" aria-current="page" href="./loja.html"
+                ><i class="fa-solid fa-cart-shopping me-1"></i>Loja</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="./adotar.html"><i class="fa-solid fa-dog me-1"></i></i>Adotar</a>
+              <a class="nav-link" href="./caes.html"
+                ><i class="fa-solid fa-paw me-1"></i>Cães para adoção</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="./favoritos.html"><i class="fa-solid fa-star me-1"></i>Favoritos</a>
-            </li> 
-
-            <li class="nav-item">
-              <a class="nav-link" href="./sobre.html"><i class="fa-solid fa-info me-1"></i>Sobre nós</a>
+              <a class="nav-link" href="./adotar.html"
+                ><i class="fa-solid fa-dog me-1"></i>Adotar</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="./contactos.html"><i class="fa-solid fa-address-card me-1"></i>Contactos</a>
+              <a class="nav-link" href="./favoritos.html"
+                ><i class="fa-solid fa-star me-1"></i>Favoritos</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="./sobre.html"
+                ><i class="fa-solid fa-info me-1"></i>Sobre nós</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="./contactos.html"
+                ><i class="fa-solid fa-address-card me-1"></i>Contactos</a
+              >
             </li>
           </ul>
         </div>
@@ -82,44 +89,85 @@
       <div class="row">
         <div class="col-md-4 mt-1">
           <div class="card text-center">
-            <img class='mx-auto mt-2' width="200" height="200"
-            src="../Images/produtos/coleira_lola.png"
+            <img
+              class="mx-auto mt-2"
+              width="200"
+              height="200"
+              src="../Images/produtos/coleira_lola.png"
             />
             <div class="card-body" id="p_1">
               <h5 class="card-title">Coleira lola</h5>
-              <p class="card-text">A coleira é totalmente ajustável, muito macia e segura. Feita em poliéster resistente.</p>
+              <p class="card-text">
+                A coleira é totalmente ajustável, muito macia e segura. Feita em
+                poliéster resistente.
+              </p>
               <p>Preço: <span class="preco">19.99</span>€</p>
               <form onsubmit="comprar(event,1)">
-              <div class="input-group mb-2">
-                <label for="quantidade_compra" class="input-group-text">Quantidade:</label>
-                <input type="number" class="form-control quantidade" min="1" step="1" value="1" name="quantidade_compra">
-                <div class="input-group-append ms-2">
-                  <button class="btn btn-primary" type="submit">COMPRAR</button>
+                <div class="input-group mb-2">
+                  <label for="quantidade_compra" class="input-group-text"
+                    >Quantidade:</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control quantidade"
+                    min="1"
+                    step="1"
+                    value="1"
+                    name="quantidade_compra"
+                  />
+                  <div class="input-group-append ms-2">
+                    <button class="btn btn-primary" type="submit">
+                      COMPRAR
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal fade" id="precoJanela" role="dialog" style="overflow: hidden;"> 
-      <div class="modal-dialog modal-dialog-centered modal ">
+    <div
+      class="modal fade"
+      id="precoJanela"
+      role="dialog"
+      style="overflow: hidden"
+    >
+      <div class="modal-dialog modal-dialog-centered modal">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">ALERTA DE COMPRA</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="fecharJanela()"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onclick="fecharJanela()"
+            ></button>
           </div>
           <div class="modal-body">
             <p class="texto-principal"></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="fecharJanela()">OK</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="fecharJanela()"
+            >
+              OK
+            </button>
           </div>
         </div>
       </div>
-      
-    </div>  
-      
+    </div>
+    <script
+      src="https://kit.fontawesome.com/c9372bc587.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+    <script src="../JS/loja.js"></script>
+    <script src="../JS/jquery-3.7.1.min.js"></script>
+
   </body>
 </html>
