@@ -4,7 +4,7 @@
 
 .main-banner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://warringtonanimalwelfare.org.uk/sites/default/files/Dog%20rescue%20society_0.jpeg");
+    url('../Images/banners/banner_adotar.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
