@@ -85,7 +85,7 @@
         </div>
       </div>
     </nav>
-    <div class="container mt-2">
+    <div class="container mt-2 mb-3">
       <div class="row">
         <div class="col-md-4 mt-1">
           <div class="card text-center">
@@ -100,6 +100,80 @@
               <p class="card-text">
                 A coleira é totalmente ajustável, muito macia e segura. Feita em
                 poliéster resistente.
+              </p>
+              <p>Preço: <span class="preco">19.99</span>€</p>
+              <form onsubmit="comprar(event,1)">
+                <div class="input-group mb-2">
+                  <label for="quantidade_compra" class="input-group-text"
+                    >Quantidade:</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control quantidade"
+                    min="1"
+                    step="1"
+                    value="1"
+                    name="quantidade_compra"
+                  />
+                  <div class="input-group-append ms-2">
+                    <button class="btn btn-primary" type="submit">
+                      COMPRAR
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-1">
+          <div class="card text-center">
+            <img
+              class="mx-auto mt-2"
+              width="200"
+              height="200"
+              src="../Images/produtos/ração1.png"
+            />
+            <div class="card-body" id="p_1">
+              <h5 class="card-title">Ração Uauu sabor Carne e Arroz</h5>
+              <p class="card-text">
+                DalDog Adulto Raças Médias e Grandes é o alimento ideal para cães exigentes.
+              </p>
+              <p>Preço: <span class="preco">19.99</span>€</p>
+              <form onsubmit="comprar(event,1)">
+                <div class="input-group mb-2">
+                  <label for="quantidade_compra" class="input-group-text"
+                    >Quantidade:</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control quantidade"
+                    min="1"
+                    step="1"
+                    value="1"
+                    name="quantidade_compra"
+                  />
+                  <div class="input-group-append ms-2">
+                    <button class="btn btn-primary" type="submit">
+                      COMPRAR
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-1">
+          <div class="card text-center">
+            <img
+              class="mx-auto mt-2"
+              width="200"
+              height="200"
+              src="../Images/produtos/coleira_lola.png"
+            />
+            <div class="card-body" id="p_1">
+              <h5 class="card-title">Luva Tira Pelos Western</h5>
+              <p class="card-text">
+                Ideal para remover excesso de pelos do animal
               </p>
               <p>Preço: <span class="preco">19.99</span>€</p>
               <form onsubmit="comprar(event,1)">
@@ -168,6 +242,5 @@
     <script src="../JS/bootstrap.bundle.min.js"></script>
     <script src="../JS/loja.js"></script>
     <script src="../JS/jquery-3.7.1.min.js"></script>
-
   </body>
 </html>
