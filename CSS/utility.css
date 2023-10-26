@@ -4,7 +4,7 @@
 
 .main-banner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('../Images/banners/banner_adotar.jpeg');
+    url("../Images/banners/banner_adotar.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
@@ -21,12 +21,11 @@
 }
 
 input[type="checkbox"]:required:invalid + label {
-    color: red;
-  }
-  input[type="checkbox"]:required:valid + label {
-    color: green;
-  }
-
+  color: red;
+}
+input[type="checkbox"]:required:valid + label {
+  color: green;
+}
 
 /* Media queries */
 @media only screen and (max-width: 576px) {
@@ -47,3 +46,9 @@ input[type="checkbox"]:required:invalid + label {
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  button.responsive-button {
+    width: 100% !important;
+  }
+}
+/* --------------------------------------- */

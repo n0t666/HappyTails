@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html" />
     <title>Loja</title>
     <link rel="stylesheet" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../CSS/utility.css" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <style></style>
   </head>
@@ -86,23 +87,23 @@
       </div>
     </nav>
     <div class="container mt-2 mb-3">
-      <div class="row">
+      <div class="row row-gap-3">
         <div class="col-md-4 mt-1">
-          <div class="card text-center">
+          <div class="card text-center h-100 shadow">
             <img
               class="mx-auto mt-2"
               width="200"
               height="200"
               src="../Images/produtos/coleira_lola.png"
             />
-            <div class="card-body" id="p_1">
+            <div class="card-body d-flex flex-column justify-content-between" id="p_1">
               <h5 class="card-title">Coleira lola</h5>
               <p class="card-text">
                 A coleira é totalmente ajustável, muito macia e segura. Feita em
                 poliéster resistente.
               </p>
               <p>Preço: <span class="preco">19.99</span>€</p>
-              <form onsubmit="comprar(event,1)">
+              <form onsubmit="comprar(event,1)" id="fp_1">
                 <div class="input-group mb-2">
                   <label for="quantidade_compra" class="input-group-text"
                     >Quantidade:</label
@@ -115,31 +116,29 @@
                     value="1"
                     name="quantidade_compra"
                   />
-                  <div class="input-group-append ms-2">
-                    <button class="btn btn-primary" type="submit">
-                      COMPRAR
-                    </button>
-                  </div>
                 </div>
               </form>
             </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-outline-primary rounded-pill w-50 responsive-button" form="fp_1">COMPRAR</button>
+           </div>           
           </div>
         </div>
         <div class="col-md-4 mt-1">
-          <div class="card text-center">
+          <div class="card text-center h-100 shadow">
             <img
               class="mx-auto mt-2"
               width="200"
               height="200"
               src="../Images/produtos/ração1.png"
             />
-            <div class="card-body" id="p_1">
+            <div class="card-body d-flex flex-column justify-content-between" id="p_2">
               <h5 class="card-title">Ração Uauu sabor Carne e Arroz</h5>
               <p class="card-text">
                 DalDog Adulto Raças Médias e Grandes é o alimento ideal para cães exigentes.
               </p>
               <p>Preço: <span class="preco">19.99</span>€</p>
-              <form onsubmit="comprar(event,1)">
+              <form onsubmit="comprar(event,2)" id="fp_2">
                 <div class="input-group mb-2">
                   <label for="quantidade_compra" class="input-group-text"
                     >Quantidade:</label
@@ -152,31 +151,29 @@
                     value="1"
                     name="quantidade_compra"
                   />
-                  <div class="input-group-append ms-2">
-                    <button class="btn btn-primary" type="submit">
-                      COMPRAR
-                    </button>
-                  </div>
                 </div>
               </form>
             </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-outline-primary rounded-pill w-50 responsive-button" form="fp_2">COMPRAR</button>
+           </div>           
           </div>
         </div>
         <div class="col-md-4 mt-1">
-          <div class="card text-center">
+          <div class="card text-center h-100 shadow">
             <img
               class="mx-auto mt-2"
               width="200"
               height="200"
-              src="../Images/produtos/coleira_lola.png"
+              src="../Images/produtos/luva_escova.png"
             />
-            <div class="card-body" id="p_1">
+            <div class="card-body d-flex flex-column justify-content-between" id="p_3">
               <h5 class="card-title">Luva Tira Pelos Western</h5>
               <p class="card-text">
-                Ideal para remover excesso de pelos do animal
+                A Luva foi projetada para permitir a remoção  do pelo solto do seu animal de forma rápida e eficiente, enquanto o massageia e acaricia.
               </p>
               <p>Preço: <span class="preco">19.99</span>€</p>
-              <form onsubmit="comprar(event,1)">
+              <form onsubmit="comprar(event,3)" id="fp_3">
                 <div class="input-group mb-2">
                   <label for="quantidade_compra" class="input-group-text"
                     >Quantidade:</label
@@ -189,14 +186,13 @@
                     value="1"
                     name="quantidade_compra"
                   />
-                  <div class="input-group-append ms-2">
-                    <button class="btn btn-primary" type="submit">
-                      COMPRAR
-                    </button>
-                  </div>
                 </div>
               </form>
             </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-outline-primary rounded-pill w-50 responsive-button" form="fp_3">COMPRAR</button>
+           </div>
+           
           </div>
         </div>
       </div>
