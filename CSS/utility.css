@@ -3,14 +3,17 @@
 }
 
 .main-banner {
+  color: #fff;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.adotar-banner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("../Images/banners/banner_adotar.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-  color: #fff;
-  padding-top: 60px;
-  padding-bottom: 60px;
 }
 
 .lg-text {
@@ -20,11 +23,52 @@
   color: #fff;
 }
 
-input[type="checkbox"]:required:invalid + label {
+.policy-agreement input[type="checkbox"]:required:invalid + label {
   color: red;
 }
-input[type="checkbox"]:required:valid + label {
+.policy-agreement input[type="checkbox"]:required:valid + label {
   color: green;
+}
+
+.team-member img {
+  transition: transform 0.5s ease, border 0.5s ease;
+}
+
+.team-member img:hover {
+  transform: scale(1.1);
+  border: 8px solid black;
+}
+
+.paw-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../Images/divider.jpg");
+}
+
+#contactForm .form-control {
+  border-radius: 0;
+}
+#contactForm .form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#contactForm {
+  background-color: #e8edf0;
+}
+
+#mapContact iframe {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+}
+#contactForm,
+
+#mapContact {
+  height: 500px;
+  display: flex;
+  align-items: stretch;
 }
 
 /* Media queries */
@@ -39,16 +83,23 @@ input[type="checkbox"]:required:valid + label {
     display: none;
   }
 }
-
 @media only screen and (max-width: 992px) {
   .away-container {
     max-width: 80%;
   }
+
+  .mapHolder {
+    display: none;
+  }
+  
 }
+
+
 
 @media only screen and (max-width: 1000px) {
   button.responsive-button {
     width: 100% !important;
   }
 }
+
 /* --------------------------------------- */

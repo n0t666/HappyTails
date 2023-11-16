@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html" />
     <title>Formulário de adoção</title>
-    <link rel="stylesheet" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="../CSS/utility.css" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   </head>
@@ -88,13 +88,14 @@
         </div>
       </div>
     </nav>
-    <div class="main-banner">
+    <div class="main-banner adotar-banner">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <h1 class="lg-text">Formulário de adoção</h1>
             <p class="text-white">
-              Se você deseja iniciar o processo de adoção, pedimos que preencha o formulário abaixo.
+              Se você deseja iniciar o processo de adoção, pedimos que preencha
+              o formulário abaixo.
             </p>
           </div>
         </div>
@@ -116,6 +117,16 @@
             ></button>
           </div>
           <form class="row g-3" action="#" method="POST">
+            <div
+              class="col-md-12 border-5 border border-black rounded-5 py-4 justify-content-center d-flex my-4 paw-bg"
+            >
+              <div class="text-center text-white bg-info rounded-3">
+                <h1 class="display-6 mx-2">
+                  Informações pessoais
+                </h1>
+              </div>
+            </div>
+
             <div class="col-md-6">
               <label for="inputFirstName" class="form-label"
                 >Primeiro Nome<span class="ms-1 text-danger">*</span></label
@@ -143,7 +154,6 @@
                 required
               />
             </div>
-
             <div class="col-12">
               <label for="inputBirthdayDate" class="form-label"
                 >Data de nascimento<span class="ms-1 text-danger"
@@ -249,6 +259,18 @@
               />
             </div>
 
+            <div
+              class="col-md-12 border-5 border border-black rounded-5 py-4 justify-content-center d-flex my-4 paw-bg"
+            >
+            <div class="text-center text-white bg-info rounded-3">
+              <h1 class="display-6 mx-2">
+                Informações de Adoção Gerais
+              </h1>
+            </div>
+            </div>
+
+
+
             <div class="col-md-12">
               <label for="inputPetName" class="form-label"
                 >Se gostaria de adoptar um animal específico, indique por favor
@@ -280,6 +302,7 @@
                 />
                 <label class="form-check-label" for="gender1"> Fêmea </label>
               </div>
+
               <div class="form-check ms-2">
                 <input
                   class="form-check-input"
@@ -304,7 +327,6 @@
                 </label>
               </div>
             </div>
-
             <div class="col-md-12">
               <label class="form-label"
                 >Qual o objetivo da adoção?<span class="ms-1 text-danger"
@@ -317,7 +339,7 @@
                   type="checkbox"
                   value="Companhia para outro gato"
                   id="adoptObjective1"
-                  name ="adoptObjective[]"
+                  name="adoptObjective[]"
                 />
                 <label class="form-check-label" for="adoptObjective1">
                   Companhia para outro gato
@@ -329,7 +351,7 @@
                   type="checkbox"
                   value="Companhia"
                   id="adoptObjective2"
-                  name ="adoptObjective[]"
+                  name="adoptObjective[]"
                 />
                 <label class="form-check-label" for="adoptObjective2">
                   Companhia
@@ -341,7 +363,7 @@
                   type="checkbox"
                   value="Criação"
                   id="adoptObjective3"
-                  name ="adoptObjective[]"
+                  name="adoptObjective[]"
                 />
                 <label class="form-check-label" for="adoptObjective3">
                   Criação
@@ -365,6 +387,17 @@
                 required
               />
             </div>
+
+            <div
+              class="col-md-12 border-5 border border-black rounded-5 py-4 justify-content-center d-flex my-4 paw-bg"
+            >
+            <div class="text-center text-white bg-info rounded-3">
+              <h1 class="display-6 mx-2">
+                Informações sobre a Habitação
+              </h1>
+            </div>
+          </div>
+
 
             <div class="col-md-12">
               <label class="form-label"
@@ -498,7 +531,7 @@
                   type="checkbox"
                   value="0"
                   id="kidsAges1"
-                  name ="kidsAges[]"
+                  name="kidsAges[]"
                 />
                 <label class="form-check-label" for="kidsAges1">
                   Não existem crianças
@@ -510,7 +543,7 @@
                   type="checkbox"
                   value="Maior que 5"
                   id="kidsAges2"
-                  name ="kidsAges[]"
+                  name="kidsAges[]"
                 />
                 <label class="form-check-label" for="kidsAges2">
                   < 5 anos
@@ -522,7 +555,7 @@
                   type="checkbox"
                   value="5 a 10 anos"
                   id="kidsAges3"
-                  name ="kidsAges[]"
+                  name="kidsAges[]"
                 />
                 <label class="form-check-label" for="kidsAges3">
                   5 a 10 anos
@@ -534,7 +567,7 @@
                   type="checkbox"
                   value="Maior que 10"
                   id="kidsAges4"
-                  name ="kidsAges[]"
+                  name="kidsAges[]"
                 />
                 <label class="form-check-label" for="kidsAges4">
                   >10 anos
@@ -572,15 +605,21 @@
               </div>
             </div>
 
-            <div class="col-md-12">
-              <hr />
+            <div
+              class="col-md-12 border-5 border border-black rounded-5 py-4 justify-content-center d-flex my-4 paw-bg"
+            >
+              <header class="text-center text-white bg-info rounded-3 px-2">
+                <h1
+                  class="display-6 text-center text-separator bg-info rounded-3"
+                >
+                  Informações sobre a Personalidade do Animal
+                </h1>
+                <p class="lead">
+                  Que tipo de personalidade espera encontrar no animal? Preencha
+                  por favor as próximas questões:
+                </p>
+              </header>
             </div>
-
-            <h5>
-              Que tipo de personalidade espera encontrar no animal? Preencha por
-              favor as próximas questões:
-            </h5>
-
             <div class="col-md-12">
               <label class="form-label"
                 >Goste de crianças:<span class="ms-1 text-danger"
@@ -995,6 +1034,16 @@
               </textarea>
             </div>
 
+            <div
+              class="col-md-12 border-5 border border-black rounded-5 py-4 justify-content-center d-flex my-4 paw-bg"
+            >
+            <div class="text-center text-white bg-info rounded-3">
+              <h1 class="display-6 mx-2">
+                Informações sobre os Cuidados do Animal
+              </h1>
+            </div>
+            </div>
+
             <div class="col-md-12">
               <label class="form-label"
                 >Na sua ausência (férias p.ex.) como pretende deixar o
@@ -1388,7 +1437,7 @@
                 pretender, pode eliminar ou editar. Consulte a nossa
                 <a href="#">Política de Privacidade</a>.
               </p>
-              <div class="form-check">
+              <div class="form-check policy-agreement">
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -1417,7 +1466,10 @@
         </div>
       </div>
     </div>
-    <script src="https://kit.fontawesome.com/c9372bc587.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/c9372bc587.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
     <script src="../JS/jquery-3.7.1.min.js"></script>
     <script src="../JS/adotar.js"></script>
