@@ -63,13 +63,15 @@
   height: 100%;
   min-width: 100%;
 }
-#contactForm,
 
 #mapContact {
   height: 500px;
   display: flex;
   align-items: stretch;
 }
+
+
+
 
 /* Media queries */
 @media only screen and (max-width: 576px) {
@@ -93,7 +95,6 @@
   }
   
 }
-
 
 
 @media only screen and (max-width: 1000px) {
