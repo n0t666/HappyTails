@@ -5,14 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html" />
     <title>Favoritos</title>
     <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="../CSS/utility.css" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0">
       <div class="container-fluid">
         <a class="navbar-brand text align-text-top" href="./index.html">
           <img
-            src="../Images/logo2.png" 
+            src="../Images/logo2.png"
             alt="Logótipo da organização"
             class="d-inline-block"
             height="60"
@@ -35,38 +36,105 @@
             class="navbar-nav a nav-underline navbar-collapse justify-content-center"
           >
             <li class="nav-item">
-              <a class="nav-link" href="./index.html"><i class="fa-solid fa-house me-1"></i></i>Página inicial</a>
+              <a class="nav-link" href="./index.html"
+                ><i class="fa-solid fa-house me-1"></i>Página inicial</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link"  href="./loja.html"><i class="fa-solid fa-cart-shopping me-1"></i>Loja</a>
-            </li>
-            
-
-            <li class="nav-item">
-              <a class="nav-link" href="./caes.html"><i class="fa-solid fa-paw me-1"></i>Cães para adoção</a>
+              <a class="nav-link" href="./loja.html"
+                ><i class="fa-solid fa-cart-shopping me-1"></i>Loja</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link"  href="./adotar.html"><i class="fa-solid fa-dog me-1"></i></i>Adotar</a>
+              <a class="nav-link" href="./caes.html"
+                ><i class="fa-solid fa-paw me-1"></i>Cães para adoção</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./favoritos.html"><i class="fa-solid fa-star me-1"></i>Favoritos</a>
-            </li> 
-
-            <li class="nav-item">
-              <a class="nav-link" href="./sobre.html"><i class="fa-solid fa-info me-1"></i>Sobre nós</a>
+              <a class="nav-link" href="./adotar.html"
+                ><i class="fa-solid fa-dog me-1"></i>Adotar</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="./contactos.html"><i class="fa-solid fa-address-card me-1"></i>Contactos</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="./favoritos.html"
+                ><i class="fa-solid fa-star me-1"></i>Favoritos</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="./sobre.html"
+                ><i class="fa-solid fa-info me-1"></i>Sobre nós</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="./contactos.html"
+                ><i class="fa-solid fa-address-card me-1"></i>Contactos</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <script src="https://kit.fontawesome.com/c9372bc587.js" crossorigin="anonymous"></script>
+    <div class="container mt-3 mb-3">
+      <div class="row d-flex justify-content-center dogsWrap">
+
+        <div class="col-md-6 col-lg-3 mt-3">
+          <div class="card text-center h-100 rounded-0 border-0 dogsCard">
+            <h5 class="card-header border-0 bg-dark text-bg-dark rounded-0 text-center rounded-top-3 py-3">Dagwood</h5>
+            <img class="card-img-top rounded-0" src="../Images/dogs_template/German-Shepherd-dog-Alsatian.png" alt="Card image cap" />
+            <div class="btn-group  rounded-bottom-3 rounded-top-0" role="group" aria-label="Basic example">
+            <button class="btn btn-outline-dark text-uppercase py-3 w-100 rounded-0">ver detalhes</button>
+            <button  type="button" class="btn btn-danger py-3 w-25 rounded-0"><i class="fa-solid fa-heart" ></i></button>
+          </div>
+          </div>
+        </div>
+
+        <div class="col-md-6  col-lg-3 mt-3 dogsCards">
+          <div class="card text-center h-100 rounded-0 border-0 dogsCard">
+            <h5 class="card-header border-0 bg-dark text-bg-dark rounded-0 text-center rounded-top-3 py-3">Cupcake</h5>
+            <img class="card-img-top rounded-0"  src="../Images/dogs_template/pitbull.jpg" alt="Card image cap" />
+            <div class="btn-group  rounded-bottom-3 rounded-top-0" role="group" aria-label="Basic example">
+            <button class="btn btn-outline-dark text-uppercase py-3 w-100 rounded-0">ver detalhes</button>
+            <button  type="button" class="btn btn-danger py-3 w-25 rounded-0"><i class="fa-solid fa-heart" ></i></button>
+          </div>
+          </div>
+        </div>
+
+        <div class="col-md-6  col-lg-3 mt-3">
+          <div class="card text-center h-100 rounded-0 border-0 dogsCard">
+            <h5 class="card-header border-0 bg-dark text-bg-dark rounded-0 text-center rounded-top-3 py-3">Ixia</h5>
+            <img class="card-img-top rounded-0" src="../Images/dogs_template/dalmata.jpg" alt="Card image cap" />
+            <div class="btn-group  rounded-bottom-3 rounded-top-0" role="group" aria-label="Basic example">
+            <button class="btn btn-outline-dark text-uppercase py-3 w-100 rounded-0">ver detalhes</button>
+            <button  type="button" class="btn btn-danger py-3 w-25 rounded-0"><i class="fa-solid fa-heart" ></i></button>
+          </div>
+          </div>
+        </div>
+
+        <div class="col-md-6  col-lg-3 mt-3">
+          <div class="card text-center h-100 rounded-0 border-0 dogsCard">
+            <h5 class="card-header border-0 bg-dark text-bg-dark rounded-0 text-center rounded-top-3 py-3">Vali</h5>
+            <img class="card-img-top rounded-0" src="../Images/dogs_template/pug.jpg" alt="Card image cap" />
+            <div class="btn-group  rounded-bottom-3 rounded-top-0" role="group" aria-label="Basic example">
+            <button class="btn btn-outline-dark text-uppercase py-3 w-100 rounded-0">ver detalhes</button>
+            <button  type="button" class="btn btn-danger py-3 w-25 rounded-0"><i class="fa-solid fa-heart" ></i></button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/c9372bc587.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>
