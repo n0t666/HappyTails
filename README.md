@@ -2,6 +2,7 @@
 [![Issues][issues-shield]][issues-url]
 
 
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -9,6 +10,7 @@
     <img src="/Images/logo.png" alt="Logo">
   </a>
 </div>
+
 
 ### Linguagens/Frameworks Utilizdas
 
@@ -29,18 +31,6 @@
 
 
 
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Recursos utilizados
-
-<!-- SCREENSHOTS -->
-## Capturas de ecrã
-
-
-
-<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
