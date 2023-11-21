@@ -25,6 +25,13 @@
 
  O principal objetivo deste portal é permitir a um utilizador conhecer a empresa, visualizar os cães disponíveis para adoção, realizar pedidos de adoção ou até mesmo comprar produtos para os seus animais de estimação. O objetivo deste projeto é consolidar os conceitos adquiridos nas disciplinas de Programação para a Web – Cliente (PW-C) e Introdução à Análise e Projeto de Sistemas de Informação (IAPSI). 
 
+ ## Autores
+Nome Estudante | Número Estudante | Grupo do projeto
+| :---:| :---: | :---:
+Leandro  Pereira | 2231675 | PL2-A
+Henrique Soares  | 2231678 | PL2-A
+Carolina Alves   | 2232350 | PL2-A
+
 
 
 
