@@ -1,10 +1,11 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImQ2YTZiZjBhZDFkY2M5ZWZiNGMxZDUxM2E3MTlhYjhhZGI2MTA0ZTYyNTNjYTVmM2U0NmZkMWFiYzYwZjY1MjE3NDgwZGVhZWE1MDU0MjBmIiwiaWF0IjoxNzAzMTg5MDcxLCJuYmYiOjE3MDMxODkwNzEsImV4cCI6MTcwMzE5MjY3MSwic3ViIjoiIiwic2NvcGVzIjpbXX0.y6A5LllTMHHs5zrhElskqqSNJ0xOesQWzm85d8ixwgm3HkTMObzPWmTBjvmQ96OFwmmwUkPNuITSdHIxl_X0B7XsN7vnWux7Dr1b5t6iaD7D66iOJky8x7toJ4SmJHhNcF-HvHB_fcAxIitMPl8rMUB6z2O5LBVct-C3ooDckw3L8sHHAmMBu1hAap-AD_J5bLueGhXJvrf8FFM5tdLg5R7Od2UKLhB5hEgTCEz7CBf5LVQCs80CXVdH81zMRSPOxCJqWncjBSWDpjrWuRcg15Pmvn4uJGcLc_YYLYnJPgmYFkHvTuCKAKcsUHN2qNwPvJTWM8cVlO8NEc1SML5pAQ";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImQ4Mjc3OTg0N2YzZWQyYjA4NTdlNWVlYmZlYjk0MmUwNzVjYTljMTU0YTNhMWU5MjU4OGE4ODk1MDkwMThkOWU1MzE4MWVhNmQ1MzA5YTIzIiwiaWF0IjoxNzAzMjI0ODI1LCJuYmYiOjE3MDMyMjQ4MjUsImV4cCI6MTcwMzIyODQyNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.Fihejn49OGKkp_RxknW2wRc7XxcM2JhIOWBZ6PNBaFei4Hf-le-LAanrIyn7kaUCJE3pkVRdrtYNsIvLT24MRdqoy1kYY5QzAtuiLsVUX4XDmM-2UQHsTIEfzrxGzwq_ydjFrQdJRu5ZRFFp3Fj5iSMDmWadLJ-CNmmA-lGgo2PLc6-Lvu_bQ77TruzjtAkZwdlBdAztfWjE5xxUTrNsYUT20LWNTBJbgEjQpYkYzKKARFx-zD4ujzbtwCB_iTLUsnlR6oYwzI05e_adoHSpI8JUMKRnDcHpD7bmexQRPR2oaCHYzMcWq3OsIlKq6H1B7qlGYZ616n1Ej4NhbadwkQ";
 const apiEndPoint = "https://api.petfinder.com/v2/animals?type=dog&limit=8";
-let indice_pagina = 0;
+
+const numeroItensPaginacao = 5;
 
 $(document).ready(function () {
-  listarCaes(2);
+  listarCaes(0);
 });
 
 function fill(icon_element) {
@@ -17,14 +18,13 @@ function fill(icon_element) {
   }
 }
 
-function listarCaes(indice) 
-{
+function listarCaes(indice) {
   let link = apiEndPoint;
 
-  if(indice >1){
-    link  = apiEndPoint + "&page=" + indice;
+  if (indice > 1) {
+    link = apiEndPoint + "&page=" + indice;
   }
-  console.log(link);
+  console.log("isto" + link);
   $(".dogsWrap").empty();
   $.ajax({
     url: link,
@@ -39,6 +39,7 @@ function listarCaes(indice)
       var card = criarCard(dog);
       $(".dogsWrap").append(card);
     });
+    paginarCaes(data.pagination);
   });
 }
 
@@ -89,4 +90,82 @@ function verificarImagemCao(dadosCao) {
   }
 }
 
+function paginarCaes(dadosPaginacao) {
+  let total_paginas = dadosPaginacao.total_pages;
+  let pagina_atual = dadosPaginacao.current_page;
 
+  $(".containerPaginacao").empty();
+  $(".containerPaginacao").append(containerPaginacaoOriginal());
+
+  const divPaginacao = document.querySelector(".containerPaginacao");
+
+  const containerAnterior = divPaginacao.querySelector(".previous");
+  const btnAnterior = containerAnterior.querySelector(".btnPrevious");
+
+  const containerProximo = divPaginacao.querySelector(".next");
+  const btnProximo = containerProximo.querySelector(".btnNext");
+
+  let elementoPaginacao;
+
+  if (pagina_atual > 1) {
+    btnAnterior.classList.remove("disabled");
+    btnAnterior.addEventListener("click", () => {
+      listarCaes(pagina_atual - 1);
+    });
+  } else {
+    btnAnterior.classList.add("disabled");
+  }
+
+  const paginaInicial = Math.max(
+    1,
+    pagina_atual - Math.floor(numeroItensPaginacao / 2)
+  );
+  const paginaFinal = Math.min(
+    total_paginas,
+    paginaInicial + numeroItensPaginacao - 1
+  );
+
+  for (let i = paginaInicial; i <= paginaFinal; i++) {
+    elementoPaginacao = criarElementosPaginacao(i);
+    if (i === pagina_atual) {
+      elementoPaginacao.classList.add("active");
+    }
+    divPaginacao.insertBefore(elementoPaginacao, containerProximo);
+    elementoPaginacao.addEventListener("click", () => {
+      listarCaes(i);
+    });
+  }
+
+  if (pagina_atual < total_paginas) {
+    btnProximo.classList.remove("disabled");
+    btnProximo.addEventListener("click", () => {
+      listarCaes(pagina_atual + 1);
+    });
+  } else {
+    btnProximo.classList.add("disabled");
+  }
+
+}
+
+function containerPaginacaoOriginal() {
+  const containerPaginacao = `         
+  <li class="page-item previous">
+  <a class="page-link btnPrevious" href="#" aria-label="Anterior">
+    <span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+<li class="page-item next">
+  <a class="page-link btnNext" href="#" aria-label="Próxima">
+    <span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+  `;
+  return containerPaginacao;
+}
+
+function criarElementosPaginacao(numero) {
+  const elemento = document.createElement("li");
+  elemento.classList.add("page-item");
+  elemento.innerHTML = `<a class="page-link" href="#">${numero}</a>`;
+  return elemento;
+}
