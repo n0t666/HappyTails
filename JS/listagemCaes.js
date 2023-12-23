@@ -1,5 +1,5 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImQ4Mjc3OTg0N2YzZWQyYjA4NTdlNWVlYmZlYjk0MmUwNzVjYTljMTU0YTNhMWU5MjU4OGE4ODk1MDkwMThkOWU1MzE4MWVhNmQ1MzA5YTIzIiwiaWF0IjoxNzAzMjI0ODI1LCJuYmYiOjE3MDMyMjQ4MjUsImV4cCI6MTcwMzIyODQyNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.Fihejn49OGKkp_RxknW2wRc7XxcM2JhIOWBZ6PNBaFei4Hf-le-LAanrIyn7kaUCJE3pkVRdrtYNsIvLT24MRdqoy1kYY5QzAtuiLsVUX4XDmM-2UQHsTIEfzrxGzwq_ydjFrQdJRu5ZRFFp3Fj5iSMDmWadLJ-CNmmA-lGgo2PLc6-Lvu_bQ77TruzjtAkZwdlBdAztfWjE5xxUTrNsYUT20LWNTBJbgEjQpYkYzKKARFx-zD4ujzbtwCB_iTLUsnlR6oYwzI05e_adoHSpI8JUMKRnDcHpD7bmexQRPR2oaCHYzMcWq3OsIlKq6H1B7qlGYZ616n1Ej4NhbadwkQ";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6IjcyNTcxNWZkOTJjMzM0NTE2NGMxZjJlMDI3Nzc0YmU3NGJlMWZjNTFkYzVkNzI4MGE3NDczYTg2NDc0MmQ1NTU5Njc4OTk3ZGYyYzBmYzMwIiwiaWF0IjoxNzAzMjk4MjA3LCJuYmYiOjE3MDMyOTgyMDcsImV4cCI6MTcwMzMwMTgwNywic3ViIjoiIiwic2NvcGVzIjpbXX0.fAtAvT7E_jOb_JT3RbXL3gm-AUnBMDqqCjCOWanm4RVZHtyYqTNOUNgVNYXT5zUIG-fEt_OL2GuINyzn4B-3_n-YCYlY4_5OKhQ-ET6Ls6B60mqx3wDeUFzsMqddI33hJBovSTxnThCHncwG9OLXmvSLUV-hBmJrVl0zCUDeBpBQEhPnn42psPk8PkzndArkvKuRHMl3TG478SM7vOR1RQHJYQepsoNU-52oUJktXdH3IW6anI8RttEZU0bxl6JnHbsRbMajNbHCz8siPhgyVFfiDeg5qvRsmAD0jMkWOHnPJ354Owy6djnmkGDTH_LUpF0g4sEHmGeHZfNzJnDQww";
 const apiEndPoint = "https://api.petfinder.com/v2/animals?type=dog&limit=8";
 
 const numeroItensPaginacao = 5;
@@ -33,7 +33,6 @@ function listarCaes(indice) {
       Authorization: `Bearer ${access_token}`,
     },
   }).done(function (data) {
-    console.log(data.pagination);
     $.each(data.animals, function (index, dog) {
       console.log(dog);
       var card = criarCard(dog);
@@ -46,8 +45,8 @@ function listarCaes(indice) {
 function criarCard(dadosCao) {
   let imagemCao = verificarImagemCao(dadosCao);
   const card = `
-    <div class="col-md-6 col-lg-3 mt-3 d-flex align-items-stretch">
-    <div class="card text-center h-100 rounded-0 border-0 dogsCard  w-100 ">
+    <div class="col-md-6 col-lg-3 mt-3  d-flex align-items-stretch">
+    <div class="card text-center h-100 rounded-0 border-0 dogsCard  w-100 justify-content-between ">
       <h5
         class="card-header border-0 bg-dark text-bg-dark rounded-0 text-center rounded-top-3 py-3"
       >

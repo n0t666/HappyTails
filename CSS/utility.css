@@ -120,8 +120,22 @@
   transform: scale(1.05);
 }
 
+.dogsDataWrap table th {
+  text-align: center;
+  padding: 5px 0;
+  font-size: 30px;
+}
 
-  
+.dogsDataWrap tbody {
+  font-size: 20px;
+  text-align: center;
+}
+.dogsDataWrap td {
+  vertical-align: middle;
+}
+
+
+
 
 
 
