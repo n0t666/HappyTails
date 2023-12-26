@@ -53,8 +53,12 @@ function criarMensagemErro(mensagem) {
 function criarTabelaDados(data) {
   let tabela = document.createElement("div");
   let imagem = criaContainerImagem(data.photos);
-  tabela.classList.add("table-responsive-sm");
+  let btnFavoritos = CriarDetalhesFavorito(data);
+  tabela.classList.add("table-responsive");
   tabela.innerHTML = `
+  <div class="d-flex justify-content-center mb-2 text-bg-danger py-2 rounded  rounded-2 ">
+    <h2>Detalhes gerais:</h2>
+  </div>
   <table class="table table-hover table-bordered">
   <thead class="table-dark">
     <tr>
@@ -78,16 +82,58 @@ function criarTabelaDados(data) {
   `;
   $(".dogsDataWrap").append(imagem);
   $(".dogsDataWrap").append(tabela);
+  $(".dogsDataWrap").append(btnFavoritos);
 }
 
 function criaContainerImagem(photos) {
   if (photos.length > 0) {
     let containerImagem = document.createElement("div");
     let photo = photos[Math.floor(Math.random() * photos.length)];
+    let photoMaior = photo.full || photo.large || photo.medium || photo.small;
+
     containerImagem.innerHTML = `
-    <div class="col-md-6 offset-md-3">
-    <img src="${photo.full}" alt="Imagem do cão" class="img-fluid rounded custom-image">
+    <div class="col-md-6 offset-md-3 mb-3 d-flex justify-content-center">
+    <img src="${photoMaior}" alt="Imagem do cão" class="img-fluid rounded detailsDogImage">
     </div`;
     return containerImagem;
   }
 }
+
+function CriarDetalhesFavorito(dadosCao) {
+  let caoFavorito = verificarCaoFavorito(dadosCao.id);
+  let btnFavoritos = document.createElement("button");
+  let btnFavoritosContainer = document.createElement("div");
+
+  btnFavoritosContainer.setAttribute(
+    "class",
+    "mt-3 mb-3 d-flex justify-content-center"
+  );
+
+  btnFavoritos.setAttribute(
+    "class",
+    "btn py-3 rounded-0 border-2 fs-3"
+  );
+  btnFavoritos.setAttribute("type", "button");
+  btnFavoritos.setAttribute("id", 'dogBtn_' + dadosCao.id);
+  btnFavoritos.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+  
+
+
+  if (caoFavorito) {
+    btnFavoritos.classList.add("btn-danger");
+    btnFavoritos.innerHTML += `<span class="textoFavorito">Remover dos favoritos</span>`;
+    btnFavoritos.addEventListener("click", () => {
+      removerFavoritos(dadosCao);
+    });
+  } else {
+    btnFavoritos.classList.add("btn-outline-danger");
+    btnFavoritos.innerHTML += `<span class="textoFavorito">Adicionar aos favoritos</span>`;
+    btnFavoritos.addEventListener("click", () => {
+      adicionarFavoritos(dadosCao);
+    });
+  }
+
+  btnFavoritosContainer.appendChild(btnFavoritos);
+  return btnFavoritosContainer;
+}
+
