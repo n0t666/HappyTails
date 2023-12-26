@@ -1,6 +1,5 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6IjE0NGZlODNhNDgzZjdhYWI1ZDM1MzNjMmU3MDc5Y2ZlZmU3ZDQ1MTI2NmYyN2EzNThlM2Y1Zjg0ZjcwMGJkZTIxYjllMjFhYWY2NTEzNDVjIiwiaWF0IjoxNzAzNTU3MTUyLCJuYmYiOjE3MDM1NTcxNTIsImV4cCI6MTcwMzU2MDc1Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.mDrsyT6i0GepZ7ID_2iQmDks_vZcmKep5ieSDaLT-tLKfL0G22xeCSc_6rCwbNfjvEEN-nujCoe_ecghyLUqVdNlmsyhvndxcYkNV0gz3gSeSwxoNGn9VWubhyvavTgxO2gY_Dyhun1FrqStER6sEnfhwmdfB8utSGrUpTjBa_wP3jModc6blCY8NqnOeGOhAQLorIDZ1VJ6IFz9w73pT8floeCEhHrxtTc42bXGYyOUtYZn56i3Wxmde3UMCaTWQmpzaatK5JPHAWCN8h6Zl9XM61EXcd3kNXsxMJQxtekshX_riFUOSDNeQB4iwhOK-2XDOH4oy8dZiVKh9X97yw";
-
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImQwMDcyYzg2M2ZkMWI5M2EwYWZjN2Y2YjNiMTJmZmY0OTBlZTA2ZmZjM2RhODFkZjI3YjdjZDdkMjJmOWEzZmMyZWMwZDg4OGUxNDNhZjY4IiwiaWF0IjoxNzAzNjAxMDI1LCJuYmYiOjE3MDM2MDEwMjUsImV4cCI6MTcwMzYwNDYyNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.T4tAgMdPRXd2YMw-bR923UAvqwLbm8QYa7SMOAN0Y_MtclVSliTvABBbI5Mo44Thy4KRRF-fVklLoDiWeYHjwT2X2JBFf3POysh-JKQi7DaN2gSCRQGGUS6LTlu54efo2IbYNUBgGWFwKeDuOq0BoTZRejphMzzRWD1ftN45GfTUqirkctKnkD_EABYbDNZuLaCeA02eVKyeuVYzmb54fMH3sc6wB98p_HNC7cUmsxc48iUychuqtu571vO8OpMcYkyrV8HNzEFuDmo_quDb6QOfv2uYSNcB4CVAr1P_IHU_gOfaEo7CWA8a1k4pbWVvvEqih8JQj7kko7oumr-MUQ";
 const queryString = window.location.search;
 const paramsUrl = new URLSearchParams(queryString);
 const apiEndPoint = "https://api.petfinder.com/v2/animals/";
@@ -8,9 +7,14 @@ const apiEndPoint = "https://api.petfinder.com/v2/animals/";
 $(document).ready(function () {
   if (paramsUrl.has("id")) {
     let id = paramsUrl.get("id");
-    console.log(id);
     if (id) {
-      procurarCao(id);
+      if (obterCaoEspecifico(id)) {
+        cao = obterCaoEspecifico(id);
+        document.title = document.title + " " + cao.name;
+        criarTabelaDados(cao);
+      } else {
+        procurarCao(id);
+      }
     } else {
       criarMensagemErro("O cão necessita de um ID válido.");
     }
@@ -28,7 +32,6 @@ function procurarCao(id) {
     },
   }).always(function (data, textStatus) {
     if (textStatus == "success") {
-      console.log(data);
       document.title = document.title + " " + data.animal.name;
       criarTabelaDados(data.animal);
     } else {
@@ -49,6 +52,7 @@ function criarMensagemErro(mensagem) {
 
 function criarTabelaDados(data) {
   let tabela = document.createElement("div");
+  let imagem = criaContainerImagem(data.photos);
   tabela.classList.add("table-responsive-sm");
   tabela.innerHTML = `
   <table class="table table-hover table-bordered">
@@ -72,5 +76,18 @@ function criarTabelaDados(data) {
   </tbody>
 </table>
   `;
+  $(".dogsDataWrap").append(imagem);
   $(".dogsDataWrap").append(tabela);
+}
+
+function criaContainerImagem(photos) {
+  if (photos.length > 0) {
+    let containerImagem = document.createElement("div");
+    let photo = photos[Math.floor(Math.random() * photos.length)];
+    containerImagem.innerHTML = `
+    <div class="col-md-6 offset-md-3">
+    <img src="${photo.full}" alt="Imagem do cão" class="img-fluid rounded custom-image">
+    </div`;
+    return containerImagem;
+  }
 }

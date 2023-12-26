@@ -1,5 +1,5 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImU2NDI2M2U2ZTZjMjNiM2FjNTIzZWFhMGE5YTcwYmI5YjZjZWIwNTFiMTFkYmFiNGM5OTM4YTE3NGQ3NGFhNjFiNTJkZGY3NDI4ZmIzOTI3IiwiaWF0IjoxNzAzNTY2MzMwLCJuYmYiOjE3MDM1NjYzMzAsImV4cCI6MTcwMzU2OTkzMCwic3ViIjoiIiwic2NvcGVzIjpbXX0.Xli8zznTBWruPgbhtD3tXdUpWKF0S7RPl76hoklqjGUEoAKWchcQW68CZuWpXg7c2hgyoGfLQ8Nj-YMU-ykzoXdO8H10FRER92DxHAQwLswcmiHfmvTABH6zzIwRi0PSCgo-zrXzGdW5w7TjRHc9Q5Sgv8GwAdKlUmDKOMcXbQANGXaNi8JgdeKu65s9sdL6zr5vND8UryurQFtjFgXfIlbnAC7QRXJTbuJat0o_1jx5wTdru5xmrIRvkkOVV2CcIiMrWMEIOpDeM7KEP8PebZZB2taVbDpetRuuzaP8EX3UkFdR86lG-jkushh7sic0f3_8C6pp3HtpJju6WaePag";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImQwMDcyYzg2M2ZkMWI5M2EwYWZjN2Y2YjNiMTJmZmY0OTBlZTA2ZmZjM2RhODFkZjI3YjdjZDdkMjJmOWEzZmMyZWMwZDg4OGUxNDNhZjY4IiwiaWF0IjoxNzAzNjAxMDI1LCJuYmYiOjE3MDM2MDEwMjUsImV4cCI6MTcwMzYwNDYyNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.T4tAgMdPRXd2YMw-bR923UAvqwLbm8QYa7SMOAN0Y_MtclVSliTvABBbI5Mo44Thy4KRRF-fVklLoDiWeYHjwT2X2JBFf3POysh-JKQi7DaN2gSCRQGGUS6LTlu54efo2IbYNUBgGWFwKeDuOq0BoTZRejphMzzRWD1ftN45GfTUqirkctKnkD_EABYbDNZuLaCeA02eVKyeuVYzmb54fMH3sc6wB98p_HNC7cUmsxc48iUychuqtu571vO8OpMcYkyrV8HNzEFuDmo_quDb6QOfv2uYSNcB4CVAr1P_IHU_gOfaEo7CWA8a1k4pbWVvvEqih8JQj7kko7oumr-MUQ";
 const apiEndPoint = "https://api.petfinder.com/v2/animals?type=dog&limit=8";
 
 const numeroItensPaginacao = 5;
@@ -7,16 +7,6 @@ const numeroItensPaginacao = 5;
 $(document).ready(function () {
   listarCaes(0);
 });
-
-function fill(icon_element) {
-  if (icon_element.classList.contains("btn-outline-danger")) {
-    icon_element.classList.remove("btn-outline-danger");
-    icon_element.classList.add("btn-danger");
-  } else {
-    icon_element.classList.remove("btn-danger");
-    icon_element.classList.add("btn-outline-danger");
-  }
-}
 
 function listarCaes(indice) {
   let link = apiEndPoint;
@@ -48,7 +38,7 @@ function criarCard(dadosCao) {
   let btnFavoritos = document.createElement("button");
   let card = document.createElement("div");
   btnFavoritos.innerHTML = `<i class="fa-solid fa-heart"></i>`;
-  btnFavoritos.setAttribute("id", 'dog_' + dadosCao.id);
+  btnFavoritos.setAttribute("id", 'dogBtn_' + dadosCao.id);
 
 
   if (caoFavorito){
@@ -67,7 +57,7 @@ function criarCard(dadosCao) {
 
   card.setAttribute("class", "col-md-6 col-lg-3 mt-3  d-flex align-items-stretch");
   card.innerHTML = `
-    <div class="card text-center h-100 rounded-0 border-0 dogsCard  w-100 justify-content-between ">
+    <div class="card text-center h-100 rounded-0 border-0 dogsCard  w-100 justify-content-between dogCard_${dadosCao.id} ">
       <h5
         class="card-header border-0 bg-dark text-bg-dark rounded-0 text-center rounded-top-3 py-3"
       >
@@ -93,7 +83,6 @@ function criarCard(dadosCao) {
   </div>
     `;
   card.querySelector(".cnt-btns").appendChild(btnFavoritos);
-  
   return card;
 }
 
