@@ -1,5 +1,5 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6IjcyNTcxNWZkOTJjMzM0NTE2NGMxZjJlMDI3Nzc0YmU3NGJlMWZjNTFkYzVkNzI4MGE3NDczYTg2NDc0MmQ1NTU5Njc4OTk3ZGYyYzBmYzMwIiwiaWF0IjoxNzAzMjk4MjA3LCJuYmYiOjE3MDMyOTgyMDcsImV4cCI6MTcwMzMwMTgwNywic3ViIjoiIiwic2NvcGVzIjpbXX0.fAtAvT7E_jOb_JT3RbXL3gm-AUnBMDqqCjCOWanm4RVZHtyYqTNOUNgVNYXT5zUIG-fEt_OL2GuINyzn4B-3_n-YCYlY4_5OKhQ-ET6Ls6B60mqx3wDeUFzsMqddI33hJBovSTxnThCHncwG9OLXmvSLUV-hBmJrVl0zCUDeBpBQEhPnn42psPk8PkzndArkvKuRHMl3TG478SM7vOR1RQHJYQepsoNU-52oUJktXdH3IW6anI8RttEZU0bxl6JnHbsRbMajNbHCz8siPhgyVFfiDeg5qvRsmAD0jMkWOHnPJ354Owy6djnmkGDTH_LUpF0g4sEHmGeHZfNzJnDQww";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImU2NDI2M2U2ZTZjMjNiM2FjNTIzZWFhMGE5YTcwYmI5YjZjZWIwNTFiMTFkYmFiNGM5OTM4YTE3NGQ3NGFhNjFiNTJkZGY3NDI4ZmIzOTI3IiwiaWF0IjoxNzAzNTY2MzMwLCJuYmYiOjE3MDM1NjYzMzAsImV4cCI6MTcwMzU2OTkzMCwic3ViIjoiIiwic2NvcGVzIjpbXX0.Xli8zznTBWruPgbhtD3tXdUpWKF0S7RPl76hoklqjGUEoAKWchcQW68CZuWpXg7c2hgyoGfLQ8Nj-YMU-ykzoXdO8H10FRER92DxHAQwLswcmiHfmvTABH6zzIwRi0PSCgo-zrXzGdW5w7TjRHc9Q5Sgv8GwAdKlUmDKOMcXbQANGXaNi8JgdeKu65s9sdL6zr5vND8UryurQFtjFgXfIlbnAC7QRXJTbuJat0o_1jx5wTdru5xmrIRvkkOVV2CcIiMrWMEIOpDeM7KEP8PebZZB2taVbDpetRuuzaP8EX3UkFdR86lG-jkushh7sic0f3_8C6pp3HtpJju6WaePag";
 const apiEndPoint = "https://api.petfinder.com/v2/animals?type=dog&limit=8";
 
 const numeroItensPaginacao = 5;
@@ -44,8 +44,29 @@ function listarCaes(indice) {
 
 function criarCard(dadosCao) {
   let imagemCao = verificarImagemCao(dadosCao);
-  const card = `
-    <div class="col-md-6 col-lg-3 mt-3  d-flex align-items-stretch">
+  let caoFavorito = verificarCaoFavorito(dadosCao.id);
+  let btnFavoritos = document.createElement("button");
+  let card = document.createElement("div");
+  btnFavoritos.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+  btnFavoritos.setAttribute("id", 'dog_' + dadosCao.id);
+
+
+  if (caoFavorito){
+    btnFavoritos.classList.add("btn", "btn-danger", "py-3", "w-25", "rounded-0", "border-2");
+    btnFavoritos.setAttribute("type", "button");
+    btnFavoritos.addEventListener("click", () => {
+      removerFavoritos(dadosCao);
+    });
+  } else {
+    btnFavoritos.classList.add("btn", "btn-outline-danger", "py-3", "w-25", "rounded-0", "border-2");
+    btnFavoritos.setAttribute("type", "button");
+    btnFavoritos.addEventListener("click", () => {
+      adicionarFavoritos(dadosCao);
+    });
+  }
+
+  card.setAttribute("class", "col-md-6 col-lg-3 mt-3  d-flex align-items-stretch");
+  card.innerHTML = `
     <div class="card text-center h-100 rounded-0 border-0 dogsCard  w-100 justify-content-between ">
       <h5
         class="card-header border-0 bg-dark text-bg-dark rounded-0 text-center rounded-top-3 py-3"
@@ -58,26 +79,21 @@ function criarCard(dadosCao) {
         alt="Card image cap"
       />
       <div
-        class="btn-group rounded-bottom-3 rounded-top-0 d-flex align-items-stretch"
+        class="btn-group rounded-bottom-3 rounded-top-0 d-flex align-items-stretch cnt-btns"
         role="group"
         aria-label="Basic example"
       >
-        <button
+        <a href="detalhes.html?id=${dadosCao.id}" target="_blank"
           class="btn btn-outline-dark text-uppercase py-3 w-100 rounded-0 border-2"
         >
           ver detalhes
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-danger py-3 w-25 rounded-0 border-2"
-          onclick="fill(this)"
-        >
-          <i class="fa-solid fa-heart"></i>
-        </button>
+        </a>
       </div>
     </div>
   </div>
     `;
+  card.querySelector(".cnt-btns").appendChild(btnFavoritos);
+  
   return card;
 }
 
