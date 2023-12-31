@@ -54,18 +54,22 @@ function verificarCaoFavorito(id) {
 function updateIconeFavorito(cao, favorito) {
   let btnFavorito = document.getElementById("dogBtn_" + cao.id);
   let btnFavoritoTexto = btnFavorito.querySelector(".textoFavorito");
+  console.log(btnFavoritoTexto);
   if (favorito) {
     btnFavorito.classList.remove("btn-outline-danger");
     btnFavorito.classList.add("btn-danger");
+    if (btnFavoritoTexto){
+      btnFavoritoTexto.innerHTML = "Remover dos favoritos";
+    }
     btnFavorito.addEventListener("click", () => {
-      if (btnFavorito){
-        btnFavoritoTexto.innerHTML = "Remover dos favoritos";
-      }
       removerFavoritos(cao);
     });
   } else {
     btnFavorito.classList.remove("btn-danger");
     btnFavorito.classList.add("btn-outline-danger");
+    if(btnFavoritoTexto){
+      btnFavoritoTexto.innerHTML = "Adicionar aos favoritos";
+    }
     btnFavorito.addEventListener("click", () => {
       if (btnFavorito){
         btnFavoritoTexto.innerHTML = "Adicionar aos favoritos";
