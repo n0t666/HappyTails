@@ -1,5 +1,5 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImVmNjY1OTlmOGI4NTRiZWIzMWJiZjc5OGU2MzgyMDMxZWY3MDg5ZTAxNTdmNjZlMjFjMmE4MmFhOTUwMWQ0M2U3NjUzZGIwOWEwNjAxNjc5IiwiaWF0IjoxNzAzOTkzNDQwLCJuYmYiOjE3MDM5OTM0NDAsImV4cCI6MTcwMzk5NzA0MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.CjzSUE_mG4xTpgC_7dut2YFd-NuFf5rwhq-xr3J-DKAHck3MHA7Q7FWmN7ysiPFLP08HSV6IoY6LoAOiIlhXSOlRAxJg6_NFTgGvyGDwBTRTgLY8bKS2JVYnlMW74_JdARQWU5VV5N2lYBgN0M-jCIo1xyALXOrLF4Y8q_5PE1m1OsF2U3wTNWFxloIFfbXoUymLuKVBpWG8Z17kQsenSszNMQXJqeXH_a7Mo5AJeMAqkiXGDwzbns6Og3TC_plELTOPsfMW940OhX02AhElNscjIRYCcstdihcXDIl8E8zK2xcDBBhx2bT4DCfuzyadwEdOMiw6AhucYv4SbjMwNA";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImQyYTJmYWJmZWU1OWZhMjUwMzk4YzZjZWEyMGRkOGM2NDk0MTk3MjdmYTk4OGJlNTQ1YWM0NWU1ODYzZTdkYWYzZTBmNDY3OGNjMDE2YjRmIiwiaWF0IjoxNzA1NjM5ODQzLCJuYmYiOjE3MDU2Mzk4NDMsImV4cCI6MTcwNTY0MzQ0Mywic3ViIjoiIiwic2NvcGVzIjpbXX0.TrLp0eqSv5cI3lH1ghnvf2PMRoaCC52FHMcQnpZOum97dvXzcUy5qzM-zPsBBCwJGJrxj9I0uNk19Xa4Vpl-z_QCiO9Q-_wyIoZhnwIQ_2Y4IJfIIWJegmIsbXhFhTDNVbOyE03B3Aosfl2t9tiVp6rJTlAZnBPT2H8qVYYNxKSDuqTR-MRsSf0H2PLIgSFlEtRDR8V1wFj0Qgc0NY-NzaJ89LMFvz2JDOzHjjAHTDVpbZenl0r0DrSVVv0MQDMks7xWA0cBtsTeH3ZSMU_WgzmbOerwvWBuw7KXwQp2_h_nhHnoNcR6cmXPEUTTS91w_xl1rybwT7r0yeEDZ61LuQ";
 const apiEndPoint = "https://api.petfinder.com/v2/animals?type=dog&limit=8";
 
 const numeroItensPaginacao = 5;
@@ -12,23 +12,28 @@ function listarCaes(indice) {
   let link = apiEndPoint;
 
   if (indice > 1) {
-    link = apiEndPoint + "&page=" + indice;
+    link = apiEndPoint + "&page=" + indice; //se o indice for maior que 1, adicionar o indice ao link
   }
-  console.log("isto" + link);
+
   $(".dogsWrap").empty();
   $.ajax({
     url: link,
     method: "GET",
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${access_token}`, //adicionar o token de acesso ao header do pedido
     },
-  }).done(function (data) {
-    $.each(data.animals, function (index, dog) {
+  }).always(function (data, textStatus) { //always é executado sempre que o pedido ajax é concluído, independentemente de ter sido bem sucedido ou não
+    console.log(textStatus);
+    if (textStatus == "success") {
+    $.each(data.animals, function (index, dog) { //percorrer o array de cães e criar um card para cada um
       console.log(dog);
       var card = criarCard(dog);
       $(".dogsWrap").append(card);
     });
-    paginarCaes(data.pagination);
+    paginarCaes(data.pagination); //paginar os cães com base na informação de paginação obtida no pedido ajax
+    } else {
+      criarMensagemErro("Não foi possível carregar os dados dos cães.","dogsWrap");
+    }
   });
 }
 
@@ -66,7 +71,7 @@ function criarCard(dadosCao) {
       <img
         class="card-img-top rounded-0"
         src="${imagemCao}"
-        alt="Card image cap"
+        alt="Imagem do cão"
       />
       <div
         class="btn-group rounded-bottom-3 rounded-top-0 d-flex align-items-stretch cnt-btns"
@@ -86,7 +91,7 @@ function criarCard(dadosCao) {
   return card;
 }
 
-function verificarImagemCao(dadosCao) {
+function verificarImagemCao(dadosCao) { //verificar se o cão tem uma imagem associada
   if (dadosCao.photos.length > 0) {
     return dadosCao.photos[0].large;
   } else {
@@ -123,25 +128,25 @@ function paginarCaes(dadosPaginacao) {
   const paginaInicial = Math.max(
     1,
     pagina_atual - Math.floor(numeroItensPaginacao / 2)
-  );
+  );//Math.max retorna o maior valor entre os dois valores passados como parâmetro
   const paginaFinal = Math.min(
     total_paginas,
     paginaInicial + numeroItensPaginacao - 1
-  );
+  ); //Math.min retorna o menor valor entre os dois valores passados como parâmetro
 
   for (let i = paginaInicial; i <= paginaFinal; i++) {
     elementoPaginacao = criarElementosPaginacao(i);
     if (i === pagina_atual) {
-      elementoPaginacao.classList.add("active");
+      elementoPaginacao.classList.add("active"); //adicionar a classe active ao elemento de paginação que corresponde à página atual
     }
-    divPaginacao.insertBefore(elementoPaginacao, containerProximo);
+    divPaginacao.insertBefore(elementoPaginacao, containerProximo); //inserir o elemento de paginação antes do botão de paginação seguinte
     elementoPaginacao.addEventListener("click", () => {
       listarCaes(i);
     });
   }
 
-  if (pagina_atual < total_paginas) {
-    btnProximo.classList.remove("disabled");
+  if (pagina_atual < total_paginas) { //se a página atual for menor que o total de páginas, adicionar o evento de click ao botão de paginação seguinte
+    btnProximo.classList.remove("disabled"); //remover a classe disabled do botão de paginação seguinte
     btnProximo.addEventListener("click", () => {
       listarCaes(pagina_atual + 1);
     });
@@ -151,7 +156,7 @@ function paginarCaes(dadosPaginacao) {
 
 }
 
-function containerPaginacaoOriginal() {
+function containerPaginacaoOriginal() { 
   const containerPaginacao = `         
   <li class="page-item previous">
   <a class="page-link btnPrevious" href="#" aria-label="Anterior">

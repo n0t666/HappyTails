@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html" />
     <title>Formulário de adoção</title>
-    <meta name="author" content="co-authored by Leandro Pereira,Carolina Alves,Henrique Soares">
+    <meta
+      name="author"
+      content="co-authored by Leandro Pereira,Carolina Alves,Henrique Soares"
+    />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="../CSS/utility.css" />
@@ -93,11 +96,27 @@
               Se você deseja iniciar o processo de adoção, pedimos que preencha
               o formulário abaixo.
             </p>
+            <button
+              class="btn btn-outline-light w-50 btn-lg"
+              data-bs-toggle="collapse"
+              data-bs-target="#listaCaes"
+              aria-expanded="false"
+              aria-controls="listaCaes"
+            >
+              Listar cães adotados
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div class="container-fluid mx-auto mt-5">
+      <div class="row d-flex justify-content-center m-5">
+        <div class="col col-md-6 collapse" id="listaCaes">
+          <h2 class="text-center">Lista de cães adotados:</h2>
+          <ul class="list-group" id="listaAnimaisAdotados">
+          </ul>
+        </div>
+      </div>
       <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11">
           <div
@@ -112,7 +131,7 @@
               aria-label="Fechar"
             ></button>
           </div>
-          <form class="row g-3" action="#" method="POST">
+          <form class="row g-3" action="#" method="POST" id="formAdotar">
             <div
               class="col-md-12 border-5 border border-black rounded-5 py-4 justify-content-center d-flex my-4 paw-bg"
             >
@@ -514,7 +533,7 @@
               >
               <div class="form-check ms-2">
                 <input
-                  class="form-check-input"
+                  class="form-check-input ch_obligatory"
                   type="checkbox"
                   value="0"
                   id="kidsAges1"
@@ -1174,7 +1193,7 @@
               >
               <div class="form-check ms-2">
                 <input
-                  class="form-check-input"
+                  class="form-check-input ch_obligatory"
                   type="checkbox"
                   value="Ração Seca"
                   id="food1"
@@ -1229,7 +1248,7 @@
               >
               <div class="form-check ms-2">
                 <input
-                  class="form-check-input"
+                  class="form-check-input ch_obligatory"
                   type="checkbox"
                   value="Ter filhos"
                   id="futurePlans1"
@@ -1336,7 +1355,7 @@
                   id="pregnant1"
                   required
                 />
-                <label class="form-check-label" for="allergy1"> Sim </label>
+                <label class="form-check-label" for="pregnant1"> Sim </label>
               </div>
               <div class="form-check ms-2">
                 <input
@@ -1346,7 +1365,7 @@
                   value="N"
                   id="pregnant2"
                 />
-                <label class="form-check-label" for="allergy2"> Não </label>
+                <label class="form-check-label" for="pregnant2"> Não </label>
               </div>
             </div>
 
@@ -1453,12 +1472,14 @@
         </div>
       </div>
     </div>
+    <div class="toast-container top-0 end-0 p-3 position-fixed"></div>
     <script
       src="https://kit.fontawesome.com/c9372bc587.js"
       crossorigin="anonymous"
     ></script>
     <script src="../JS/bootstrap.bundle.min.js"></script>
     <script src="../JS/jquery-3.7.1.min.js"></script>
+    <script src="../JS/webstorageHandler.js"></script>
     <script src="../JS/adotar.js"></script>
   </body>
 </html>
