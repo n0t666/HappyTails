@@ -135,9 +135,9 @@
 
 .detailsDogImage {
   animation: slideIn 1s ease-in-out;
-  border: 4px solid black; 
-  border-radius: 10px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  border: 4px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-height: 500px;
   object-fit: cover;
 }
@@ -145,6 +145,13 @@
 .detailsDogImage:hover {
   transform: scale(1.1);
   border: 8px solid black;
+}
+
+.adotados-list-btn-banner {
+  display: block;
+}
+.adotados-list-btn {
+  display: none;
 }
 
 @keyframes slideIn {
@@ -169,6 +176,12 @@
 @media only screen and (max-width: 770px) {
   .main-banner {
     display: none;
+  }
+  .adotados-list-btn-banner {
+    display: none;
+  }
+  .adotados-list-btn {
+    display: block;
   }
 }
 @media only screen and (max-width: 992px) {

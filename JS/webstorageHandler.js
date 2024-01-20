@@ -1,4 +1,3 @@
-
 function adicionarFavoritos(cao) {
   let caesFavoritos = obterCaesFavoritos();
 
@@ -20,8 +19,9 @@ function removerFavoritos(cao, removerPermanente = false) {
     caesFavoritos = caesFavoritos.filter((caes) => caes.id != cao.id); //remover o cão dos favoritos filtrando os cães que não tem o id do cão que queremos remover
     localStorage.setItem("caesFavoritos", JSON.stringify(caesFavoritos));
     criarMensagemSucesso("Cão removido dos favoritos com sucesso!", "danger");
-    if (removerPermanente) { 
-      $(".dogCard_" + cao.id).fadeOut(300, function () { //remover o card do cão da lista de favoritos com uma animação de fadeout
+    if (removerPermanente) {
+      $(".dogCard_" + cao.id).fadeOut(300, function () {
+        //remover o card do cão da lista de favoritos com uma animação de fadeout
         $(this).remove();
       });
     } else {
@@ -33,7 +33,8 @@ function removerFavoritos(cao, removerPermanente = false) {
 //função para obter os cães favoritos
 function obterCaesFavoritos() {
   let favoritos = JSON.parse(localStorage.getItem("caesFavoritos")); //obter os cães favoritos do localstorage
-  if (favoritos == null) { //se não existirem cães favoritos, criar um array vazio
+  if (favoritos == null) {
+    //se não existirem cães favoritos, criar um array vazio
     favoritos = [];
   }
   return favoritos;
@@ -62,7 +63,7 @@ function updateIconeFavorito(cao, favorito) {
   if (favorito) {
     btnFavorito.classList.remove("btn-outline-danger");
     btnFavorito.classList.add("btn-danger");
-    if (btnFavoritoTexto){
+    if (btnFavoritoTexto) {
       btnFavoritoTexto.innerHTML = "Remover dos favoritos";
     }
     btnFavorito.addEventListener("click", () => {
@@ -71,11 +72,11 @@ function updateIconeFavorito(cao, favorito) {
   } else {
     btnFavorito.classList.remove("btn-danger");
     btnFavorito.classList.add("btn-outline-danger");
-    if(btnFavoritoTexto){
+    if (btnFavoritoTexto) {
       btnFavoritoTexto.innerHTML = "Adicionar aos favoritos";
     }
     btnFavorito.addEventListener("click", () => {
-      if (btnFavorito){
+      if (btnFavorito) {
         btnFavoritoTexto.innerHTML = "Adicionar aos favoritos";
       }
       adicionarFavoritos(cao);
@@ -108,7 +109,8 @@ function criarMensagemSucesso(msg, color) {
 
 function mostrarToasters() {
   let toasters = document.querySelectorAll(".toast"); //obter todas os toasters
-  toasters.forEach((toast) => { //para cada toaster, mostrar e eliminar passados 3 segundos
+  toasters.forEach((toast) => {
+    //para cada toaster, mostrar e eliminar passados 3 segundos
     let bsToast = new bootstrap.Toast(toast);
     bsToast.show();
     setTimeout(() => {
@@ -128,7 +130,8 @@ function listarFavoritos() {
   let caesFavoritos = obterCaesFavoritos();
   let containerCaes = document.querySelector(".dogsWrap"); //obter o container onde vão ser colocados os cães favoritos
 
-  if (caesFavoritos.length == 0) { //se não existirem cães favoritos, mostrar uma mensagem de erro
+  if (caesFavoritos.length == 0) {
+    //se não existirem cães favoritos, mostrar uma mensagem de erro
     containerCaes.innerHTML = `
     <div class="col-12 text-center">
       <h1 class="text-danger">Nenhum cão favorito encontrado!</h1>
@@ -197,14 +200,14 @@ function verificarImagemCaoFavoritos(dadosCao) {
   }
 }
 
-function adicionarNomeAnimal(nome){
+function adicionarNomeAnimal(nome) {
   let animaisAdotados = obterAnimaisAdotados();
   id = animaisAdotados.length + 1;
-  animaisAdotados.push({nome: nome, id: id});
+  animaisAdotados.push({ nome: nome, id: id });
   localStorage.setItem("animaisAdotados", JSON.stringify(animaisAdotados));
 }
 
-function verificarAnimaisAdotados(nome){
+function verificarAnimaisAdotados(nome) {
   let animaisAdotados = obterAnimaisAdotados();
   let animal = animaisAdotados.find((animal) => animal.nome == nome);
   if (animal != null) {
@@ -213,7 +216,7 @@ function verificarAnimaisAdotados(nome){
   return false;
 }
 
-function obterAnimaisAdotados(){
+function obterAnimaisAdotados() {
   let animais = JSON.parse(localStorage.getItem("animaisAdotados"));
   if (animais == null) {
     animais = [];
@@ -222,7 +225,7 @@ function obterAnimaisAdotados(){
 }
 
 //função para criar mensagem de erro
-function criarMensagemErro(mensagem,target) {
+function criarMensagemErro(mensagem, target) {
   const mensagemErro = `
     <div class="alert alert-danger py-5 text-center fs-1" role="alert">
     <i class=bi bi-exclamation"></i>
@@ -233,7 +236,7 @@ function criarMensagemErro(mensagem,target) {
 }
 
 //função para remover animal da lista de animais adotados
-function removerAnimal(nome,id){
+function removerAnimal(nome, id) {
   let animaisAdotados = obterAnimaisAdotados();
   if (verificarAnimaisAdotados(nome)) {
     animaisAdotados = animaisAdotados.filter((animal) => animal.id != id); // Remove o animal da lista de animais adotados
@@ -243,5 +246,4 @@ function removerAnimal(nome,id){
       $(this).remove();
     });
   }
-
 }

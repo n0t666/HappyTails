@@ -7,11 +7,9 @@ $(document).ready(function () { //função para executar o código quando a pág
       if (nomeAnimal.length > 0) { 
         if (verificarAnimaisAdotados(nomeAnimal)) {
           criarMensagemSucesso("O animal já foi adotado!", "danger");
-          console.log("erro");
         } else {
           adicionarNomeAnimal(nomeAnimal);
           criarMensagemSucesso("O animal foi adotado com sucesso!", "success");
-          console.log("sucesso");
         }
       }
     } else {

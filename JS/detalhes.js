@@ -1,29 +1,39 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImEyNTg4YTY1ODE3YzcyNDE1ZDA1NDA4YzY2YTM3MjFkMzU2M2Q0MWRmOWI5Nzk0Mjk0Mjc5ZjMzMGU4YThhNjUzZWIzNDIyMzBhYWJhNzJmIiwiaWF0IjoxNzA0NzQwODU2LCJuYmYiOjE3MDQ3NDA4NTYsImV4cCI6MTcwNDc0NDQ1Niwic3ViIjoiIiwic2NvcGVzIjpbXX0.i73GUnz4OglXL_UUi-zwnCdrGG3II2SHyw0MDQmzOVClexPzleHjVY_uArXnJwbHbmxzmg2tpcsay4OIKSpPxFDNTcSzaeG3R2pC1r5aBHY_Tb7XecNclF4K5uPLfnN_O1EJoEonsl-Xoz50N5VubGq11X1owVqr4vZYcTZ6tdLoT9xxaYs3Ws7VryqKCdo-kYw20vBHUL5k_chILzz-RIIG6OGgbTToc-hXlEcKNiWUXd004-oawvW-dgiXq5rCr8BO9lS3rTNo3WujXO5OypoHgtAkzab4wdVURUNBISrB-KGgmcPxbM5nRG5EzNHgWWBj-6lCfRwZDTYKwbvaFg";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImFhYWM3NjVhODZkMWYxYWMyNzcwZDMyZmY5Y2MwMmM2YWQyZDRhOTAxZWY1ODk1NjFlNjdlY2Q2ODcwN2MyN2Y1NjViNGRlOWQzN2U5NWE1IiwiaWF0IjoxNzA1NzA4NjE5LCJuYmYiOjE3MDU3MDg2MTksImV4cCI6MTcwNTcxMjIxOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.pdazVqnfgtPtTKOF4dQf6po5EAa-G6-f-e6vH19U8fRP2yDHrqVZAod4bnbibPlo5gG1UBeuy5SrQXfOqdKHQCkRnCSpBGrxqrOZrRKiXNmsid1Q8bss9tSyEpu9pDdVMDpfLNt5wetyE4Ps1vuAAbmyLeFx2Db6p6kdfEwWXmM57SyXTSz6MCawWabiOVqXr_b8QXWOgDSqQgKFhcRLsx5I-L1rLxaLim1a2912fWD6C_v_oYdVTPuCQMad4wJgpG-odMp2d0jsl9STZUtYhUGDmBoqf2B7T_iasCYUcpNFCR43KRepu89XZAdEaxkvLUxeVKgKNjLgpzZjv2G6Lw";
 const queryString = window.location.search; //obter os parametros passados na url
 const paramsUrl = new URLSearchParams(queryString); //criar um objeto com os parametros passados na url
 const apiEndPoint = "https://api.petfinder.com/v2/animals/"; //endpoint da api
 
-$(document).ready(function () { //quando a página carregar
-  if (paramsUrl.has("id")) { //se for passado por parametro o id do cão
+$(document).ready(function () {
+  //quando a página carregar
+  if (paramsUrl.has("id")) {
+    //se for passado por parametro o id do cão
     let id = paramsUrl.get("id");
     if (id) {
-      if (obterCaoEspecifico(id)) { //verificar se o cão está guardado no localStorage, se estiver, obter os dados do localStorage, se não estiver, fazer um pedido à api
+      if (obterCaoEspecifico(id)) {
+        //verificar se o cão está guardado no localStorage, se estiver, obter os dados do localStorage, se não estiver, fazer um pedido à api
         cao = obterCaoEspecifico(id);
         document.title = document.title + " " + cao.name; //adicionar o nome do cão ao titulo da página
         criarTabelaDados(cao);
-      } else { //se o cão não estiver guardado no localStorage, fazer um pedido à api para obter os dados do cão com o id passado por parametro através da url
+      } else {
+        //se o cão não estiver guardado no localStorage, fazer um pedido à api para obter os dados do cão com o id passado por parametro através da url
         procurarCao(id);
       }
-    } else { //se não for passado por parametro o id do cão
-      criarMensagemErro("O cão necessita de um ID válido.","dogsDataWrap");
+    } else {
+      //se não for passado por parametro o id do cão
+      criarMensagemErro("O cão necessita de um ID válido.", "dogsDataWrap");
     }
-  } else { //se não for passado por parametro o id do cão
-    criarMensagemErro("Não foi possível obter o cão correspondente.","dogsDataWrap");
+  } else {
+    //se não for passado por parametro o id do cão
+    criarMensagemErro(
+      "Não foi possível obter o cão correspondente.",
+      "dogsDataWrap"
+    );
   }
 });
 
-function procurarCao(id) { //fazer um pedido à api para obter os dados do cão com o id passado por parametro através da url, ou seja, se não estiver guardado no localStorage
+function procurarCao(id) {
+  //fazer um pedido à api para obter os dados do cão com o id passado por parametro através da url, ou seja, se não estiver guardado no localStorage
   $.ajax({
     url: apiEndPoint + id,
     method: "GET",
@@ -31,20 +41,23 @@ function procurarCao(id) { //fazer um pedido à api para obter os dados do cão 
       Authorization: `Bearer ${access_token}`,
     },
   }).always(function (data, textStatus) {
-    if (textStatus == "success") { //se o pedido for bem sucedido
+    if (textStatus == "success") {
+      //se o pedido for bem sucedido
       document.title = document.title + " " + data.animal.name;
       criarTabelaDados(data.animal);
-    } else { //se o pedido não for bem sucedido
-      criarMensagemErro("Não foi possível carregar os dados do cão.","dogsDataWrap");
+    } else {
+      //se o pedido não for bem sucedido
+      criarMensagemErro(
+        "Não foi possível carregar os dados do cão.",
+        "dogsDataWrap"
+      );
     }
   });
 }
 
-
-
 function criarTabelaDados(data) {
   let tabela = document.createElement("div");
-  let imagem = criaContainerImagem(data.photos,data.description);
+  let imagem = criaContainerImagem(data.photos, data.description);
   let btnFavoritos = CriarDetalhesFavorito(data);
   let tabelaAtributos = criarTabelAtributos(data);
   let divTags = criarContainerTags(data.tags);
@@ -83,13 +96,18 @@ function criarTabelaDados(data) {
   $(".dogsDataWrap").append(btnFavoritos);
 }
 
-function criaContainerImagem(photos, descricao) { //criar o container com a imagem do cão e a descrição em baixo
-  if (photos.length > 0) { //se o cão tiver fotos
+function criaContainerImagem(photos, descricao) {
+  //criar o container com a imagem do cão e a descrição em baixo
+  if (photos.length > 0) {
+    //se o cão tiver fotos
     let containerImagem = document.createElement("div");
-    containerImagem.setAttribute("class", "col-md-6 offset-md-3 mb-3 d-flex justify-content-center");
+    containerImagem.setAttribute(
+      "class",
+      "col-md-6 offset-md-3 mb-3 d-flex justify-content-center"
+    );
 
     let containerP = document.createElement("div");
-    containerP.setAttribute("class","text-center");
+    containerP.setAttribute("class", "text-center");
 
     let image = document.createElement("img");
     let photo = photos[Math.floor(Math.random() * photos.length)]; //obter uma foto aleatória do cão
@@ -100,7 +118,8 @@ function criaContainerImagem(photos, descricao) { //criar o container com a imag
 
     containerP.appendChild(image);
 
-    if (descricao && descricao.length > 0) { //se o cão tiver descrição adicionar a descrição
+    if (descricao && descricao.length > 0) {
+      //se o cão tiver descrição adicionar a descrição
       let desc = document.createElement("p");
       desc.textContent = descricao;
       desc.setAttribute("class", "mt-3 text-muted fw-light fs-3");
@@ -113,7 +132,6 @@ function criaContainerImagem(photos, descricao) { //criar o container com a imag
   }
 }
 
-
 function CriarDetalhesFavorito(dadosCao) {
   let caoFavorito = verificarCaoFavorito(dadosCao.id); //verificar se o cão está guardado nos favoritos
   let btnFavoritos = document.createElement("button"); //criar o botão de favoritos
@@ -124,26 +142,23 @@ function CriarDetalhesFavorito(dadosCao) {
     "mt-3 mb-3 d-flex justify-content-center"
   );
 
-  btnFavoritos.setAttribute(
-    "class",
-    "btn py-3 rounded-0 border-2 fs-3"
-  );
+  btnFavoritos.setAttribute("class", "btn py-3 rounded-0 border-2 fs-3");
   btnFavoritos.setAttribute("type", "button");
-  btnFavoritos.setAttribute("id", 'dogBtn_' + dadosCao.id); //atribuir um id ao botão de favoritos para depois ser possivel alterar o seu conteudo
+  btnFavoritos.setAttribute("id", "dogBtn_" + dadosCao.id); //atribuir um id ao botão de favoritos para depois ser possivel alterar o seu conteudo
   btnFavoritos.innerHTML = `<i class="fa-solid fa-heart me-1"></i>`;
-  
-
 
   if (caoFavorito) {
     btnFavoritos.classList.add("btn-danger");
     btnFavoritos.innerHTML += `<span class="textoFavorito">Remover dos favoritos</span>`;
-    btnFavoritos.addEventListener("click", () => { //adicionar um evento de click ao botão de favoritos para remover o cão dos favoritos quando o botão for clicado
+    btnFavoritos.addEventListener("click", () => {
+      //adicionar um evento de click ao botão de favoritos para remover o cão dos favoritos quando o botão for clicado
       removerFavoritos(dadosCao);
     });
   } else {
     btnFavoritos.classList.add("btn-outline-danger");
     btnFavoritos.innerHTML += `<span class="textoFavorito">Adicionar aos favoritos</span>`;
-    btnFavoritos.addEventListener("click", () => { //adicionar um evento de click ao botão de favoritos para adicionar o cão aos favoritos quando o botão for clicado
+    btnFavoritos.addEventListener("click", () => {
+      //adicionar um evento de click ao botão de favoritos para adicionar o cão aos favoritos quando o botão for clicado
       adicionarFavoritos(dadosCao);
     });
   }
@@ -152,8 +167,7 @@ function CriarDetalhesFavorito(dadosCao) {
   return btnFavoritosContainer;
 }
 
-function criarTabelAtributos(data)
-{
+function criarTabelAtributos(data) {
   let tabela = document.createElement("div");
   tabela.classList.add("table-responsive");
   //Criar a tabela com os dados do cão
@@ -203,19 +217,18 @@ function ObterIndicadorAtributo(atributo) {
 }
 
 //Função que retorna um container com as tags do cão
-function criarContainerTags(tags){
+function criarContainerTags(tags) {
   let containerTags = document.createElement("div");
   let elementoTag;
-  containerTags.setAttribute("class","mt-1");
-  if (tags.length > 0) { //se o cão tiver tags
-    tags.forEach(tag => {
+  containerTags.setAttribute("class", "mt-1");
+  if (tags.length > 0) {
+    //se o cão tiver tags
+    tags.forEach((tag) => {
       elementoTag = document.createElement("span");
-      elementoTag.setAttribute("class","badge bg-primary me-1 py-2");
+      elementoTag.setAttribute("class", "badge bg-primary me-1 py-2");
       elementoTag.textContent = tag;
       containerTags.appendChild(elementoTag);
     });
   }
   return containerTags;
 }
-
-

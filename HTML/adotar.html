@@ -97,7 +97,7 @@
               o formulário abaixo.
             </p>
             <button
-              class="btn btn-outline-light w-50 btn-lg"
+              class="btn btn-outline-light w-50 btn-lg adotados-list-btn-banner"
               data-bs-toggle="collapse"
               data-bs-target="#listaCaes"
               aria-expanded="false"
@@ -111,10 +111,20 @@
     </div>
     <div class="container-fluid mx-auto mt-5">
       <div class="row d-flex justify-content-center m-5">
+        <div class="col col-12 mb-3 adotados-list-btn">
+          <button
+            class="btn btn-outline-dark btn-lg w-100"
+            data-bs-toggle="collapse"
+            data-bs-target="#listaCaes"
+            aria-expanded="false"
+            aria-controls="listaCaes"
+          >
+            Listar cães adotados
+          </button>
+        </div>
         <div class="col col-md-6 collapse" id="listaCaes">
           <h2 class="text-center">Lista de cães adotados:</h2>
-          <ul class="list-group" id="listaAnimaisAdotados">
-          </ul>
+          <ul class="list-group" id="listaAnimaisAdotados"></ul>
         </div>
       </div>
       <div class="row d-flex justify-content-center">
