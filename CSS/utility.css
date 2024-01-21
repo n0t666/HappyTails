@@ -121,7 +121,7 @@
 
 .dogsDataWrap table th {
   text-align: center;
-  padding: 5px 0;
+  padding: 3px 0;
   font-size: 20px;
 }
 
@@ -195,7 +195,17 @@
   .mapHolder {
     display: none;
   }
+  .dogsDataWrap table th {
+    font-size: 15px;
+  }
+  
+  .dogsDataWrap tbody {
+    font-size: 15px;
+  }
 }
+
+
+
 
 @media only screen and (max-width: 1000px) {
   button.responsive-button {

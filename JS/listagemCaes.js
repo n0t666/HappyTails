@@ -1,5 +1,5 @@
 const access_token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6ImFhYWM3NjVhODZkMWYxYWMyNzcwZDMyZmY5Y2MwMmM2YWQyZDRhOTAxZWY1ODk1NjFlNjdlY2Q2ODcwN2MyN2Y1NjViNGRlOWQzN2U5NWE1IiwiaWF0IjoxNzA1NzA4NjE5LCJuYmYiOjE3MDU3MDg2MTksImV4cCI6MTcwNTcxMjIxOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.pdazVqnfgtPtTKOF4dQf6po5EAa-G6-f-e6vH19U8fRP2yDHrqVZAod4bnbibPlo5gG1UBeuy5SrQXfOqdKHQCkRnCSpBGrxqrOZrRKiXNmsid1Q8bss9tSyEpu9pDdVMDpfLNt5wetyE4Ps1vuAAbmyLeFx2Db6p6kdfEwWXmM57SyXTSz6MCawWabiOVqXr_b8QXWOgDSqQgKFhcRLsx5I-L1rLxaLim1a2912fWD6C_v_oYdVTPuCQMad4wJgpG-odMp2d0jsl9STZUtYhUGDmBoqf2B7T_iasCYUcpNFCR43KRepu89XZAdEaxkvLUxeVKgKNjLgpzZjv2G6Lw";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJIZjkxNEJPTmR1cXlyWnZmRHMxU1VYYzNqQ2Z4ZUtwQUFXYXVidFpPMmU2ZzBGYUJjTyIsImp0aSI6IjYzNzdlYjIyOGI4YTgyYjY5NTU5NTQzZjU4MGQxMDdmMzhjNTIxYWVhMzUzZDI3OTcxMzQ4MzQxMjA1OGZiNWUxMTRhOWUyNGE3OTdkMGVkIiwiaWF0IjoxNzA1ODcyMzExLCJuYmYiOjE3MDU4NzIzMTEsImV4cCI6MTcwNTg3NTkxMSwic3ViIjoiIiwic2NvcGVzIjpbXX0.XwbvIGoOGi5tLK0IIDSdxtFgBQJctQmFhC40ySN-A_bSVyubndu6VixS4LFkEhKrJAvWiLcybd2NfUYgoPMQJPLGcHR_WP6n4RxbV1xkvptoBoOOzmuDvxxH-oQfFrK8M9YbqnzvE9FVaf5a-xmT14DILOvJvHXB8kz52zJQHWbLzEgM4GNgbszcGZcKUX8d8FphrEDBXSdWdjS8K6qkwV7yA_SkcFe3PUjT2wOYnR7CYLFTl5YZNH4c2v2Ru-txL58icrc5qk0RGvdXhJDDRio9HXrc_7WaOL9ohdIQegWZAU-dr2pUetsq1RGC04uDUiNkZksCYUitNCEGfah0pQ";
 const apiEndPoint = "https://api.petfinder.com/v2/animals?type=dog&limit=8";
 
 const numeroItensPaginacao = 5;
@@ -24,11 +24,9 @@ function listarCaes(indice) {
     },
   }).always(function (data, textStatus) {
     //always é executado sempre que o pedido ajax é concluído, independentemente de ter sido bem sucedido ou não
-    console.log(textStatus);
     if (textStatus == "success") {
       $.each(data.animals, function (index, dog) {
         //percorrer o array de cães e criar um card para cada um
-        console.log(dog);
         var card = criarCard(dog);
         $(".dogsWrap").append(card);
       });
@@ -117,7 +115,7 @@ function verificarImagemCao(dadosCao) {
   if (dadosCao.photos.length > 0) {
     return dadosCao.photos[0].large;
   } else {
-    return "https://www.bohemianleviathan.com/wp-content/uploads/2022/09/dog-placeholder-500x500-1.png";
+    return "../Images/place_holder_dog_cards.png";
   }
 }
 
@@ -125,7 +123,7 @@ function paginarCaes(dadosPaginacao) {
   let total_paginas = dadosPaginacao.total_pages;
   let pagina_atual = dadosPaginacao.current_page;
 
-  $(".containerPaginacao").empty();
+  $(".containerPaginacao").empty(); //limpar o container de paginação
   $(".containerPaginacao").append(containerPaginacaoOriginal());
 
   const divPaginacao = document.querySelector(".containerPaginacao");

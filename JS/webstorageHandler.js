@@ -196,7 +196,7 @@ function verificarImagemCaoFavoritos(dadosCao) {
   if (dadosCao.photos.length > 0) {
     return dadosCao.photos[0].large;
   } else {
-    return "DogShelter/Images/place_holder_dog_cards.png";
+    return "../Images/place_holder_dog_cards.png";
   }
 }
 
